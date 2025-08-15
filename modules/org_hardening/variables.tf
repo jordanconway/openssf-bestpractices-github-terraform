@@ -22,7 +22,10 @@ variable "default_repository_permission" {
 variable "billing_email" {
   description = "Billing email required by github_organization_settings"
   type        = string
-  default     = "billing@example.com" # Change in real usage
+  validation {
+    condition     = can(regex("^\\S+@\\S+\\.\\S+$", var.billing_email))
+    error_message = "Please provide a valid billing email address."
+  }
 }
 
 variable "members_can_create_public_repositories" {

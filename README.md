@@ -44,18 +44,18 @@ envs/
 | has_wiki | bool | false | No | Enable Wiki. |
 | is_template | bool | false | No | Mark repository as a template. |
 | allow_merge_commit | bool | false | No | Allow merge commits. |
-| allow_squash_merge | bool | true | No | Allow squash merges. |
-| allow_rebase_merge | bool | false | No | Allow rebase merges. |
-| delete_branch_on_merge | bool | true | No | Auto-delete merged branches. |
+| allow_squash_merge | bool | true | No | Allow squash merge strategy. |
+| allow_rebase_merge | bool | false | No | Allow rebase merge strategy. |
+| delete_branch_on_merge | bool | true | No | Automatically delete head branch after merge. |
 | enforce_admins | bool | true | No | Apply branch protection to admins. |
-| required_approving_review_count | number | 2 | No | Number of required PR approvals. |
+| required_approving_review_count | number | 2 | No | Required approving PR reviews. |
 | require_code_owner_reviews | bool | true | No | Require CODEOWNERS approval. |
-| dismiss_stale_reviews | bool | true | No | Dismiss approvals on new commits. |
-| require_signed_commits | bool | true | No | Enforce signed commits on protected branch. |
-| required_linear_history | bool | true | No | Enforce linear history. |
+| dismiss_stale_reviews | bool | true | No | Dismiss stale PR approvals on new commits. |
+| require_signed_commits | bool | true | No | Require signed commits. |
+| required_linear_history | bool | true | No | Require linear commit history. |
 | require_conversation_resolution | bool | true | No | Require all review threads resolved. |
-| allow_force_pushes | bool | false | No | Permit force pushes (should remain false). |
-| allow_deletions | bool | false | No | Permit branch deletion (should remain false). |
+| allow_force_pushes | bool | false | No | Permit force pushes (keep false). |
+| allow_deletions | bool | false | No | Permit protected branch deletion (keep false). |
 | required_status_checks | list(string) | [] | No | Status check contexts required before merge. |
 | secret_scanning | bool | true | No | Enable Secret Scanning. |
 | secret_scanning_push_protection | bool | true | No | Enable push protection for secrets. |
@@ -198,23 +198,6 @@ module "repos" {
   topics       = each.value.topics
 }
 ```
-
-### Adding Environment Protection Reviewers
-
-```hcl
-module "repo_with_envs" {
-  source       = "../modules/repo_hardening"
-  organization = var.organization
-  name         = "deploy-targets"
-
-  environments = {
-    production = { reviewers = ["team:platform-team"] }
-    staging    = { reviewers = ["user:alice", "user:bob"] }
-  }
-}
-```
-
-Reviewers use raw strings today; you can standardize a prefix convention (e.g. `team:`) until native team/user type distinction variables are added.
 
 ### Organization Hardening
 

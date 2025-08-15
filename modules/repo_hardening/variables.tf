@@ -48,125 +48,116 @@ variable "topics" {
 }
 
 variable "has_issues" {
-  type    = bool
-  default = true
-}
-variable "has_discussions" {
-  type    = bool
-  default = false
-}
-variable "has_projects" {
-  type    = bool
-  default = false
-}
-variable "has_wiki" {
-  type    = bool
-  default = false
-}
-variable "is_template" {
-  type    = bool
-  description = "Enable GitHub Issues for the repository"
+  description = "Enable GitHub Issues"
   type        = bool
   default     = true
 }
 variable "has_discussions" {
-  description = "Enable GitHub Discussions for the repository"
+  description = "Enable GitHub Discussions"
   type        = bool
   default     = false
 }
 variable "has_projects" {
-  description = "Enable GitHub Projects for the repository"
+  description = "Enable (classic) Projects"
   type        = bool
   default     = false
 }
 variable "has_wiki" {
-  description = "Enable GitHub Wiki for the repository"
+  description = "Enable Wiki"
   type        = bool
   default     = false
 }
 variable "is_template" {
-  description = "Mark the repository as a template repository"
+  description = "Mark repository as a template"
   type        = bool
   default     = false
 }
 
 variable "allow_merge_commit" {
-  type    = bool
-  default = false
+  description = "Allow merge commits"
+  type        = bool
+  default     = false
 }
 variable "allow_squash_merge" {
-  type    = bool
-  default = true
+  description = "Allow squash merge strategy"
+  type        = bool
+  default     = true
 }
 variable "allow_rebase_merge" {
-  type    = bool
-  default = false
+  description = "Allow rebase merge strategy"
+  type        = bool
+  default     = false
 }
 variable "delete_branch_on_merge" {
-  type    = bool
-  default = true
+  description = "Automatically delete head branch after merge"
+  type        = bool
+  default     = true
 }
-
 variable "enforce_admins" {
-  type    = bool
-  default = true
+  description = "Apply branch protection rules to admins"
+  type        = bool
+  default     = true
 }
 variable "required_approving_review_count" {
-  type    = number
-  default = 2
+  description = "Number of required approving PR reviews"
+  type        = number
+  default     = 2
 }
 variable "require_code_owner_reviews" {
-  type    = bool
-  default = true
+  description = "Require CODEOWNERS approval on PRs"
+  type        = bool
+  default     = true
 }
 variable "dismiss_stale_reviews" {
-  type    = bool
-  default = true
+  description = "Dismiss stale PR approvals when new commits are pushed"
+  type        = bool
+  default     = true
 }
 variable "require_signed_commits" {
-  type    = bool
-  default = true
+  description = "Require signed commits on the protected branch"
+  type        = bool
+  default     = true
 }
 variable "required_linear_history" {
-  type    = bool
-  default = true
+  description = "Require linear git history (no merge commits)"
+  type        = bool
+  default     = true
 }
 variable "require_conversation_resolution" {
-  type    = bool
-  default = true
+  description = "Require all review conversations to be resolved before merging"
+  type        = bool
+  default     = true
 }
 variable "allow_force_pushes" {
-  type    = bool
-  default = false
+  description = "Permit force pushes to the protected branch"
+  type        = bool
+  default     = false
 }
 variable "allow_deletions" {
-  type    = bool
-  default = false
+  description = "Permit deletion of the protected branch"
+  type        = bool
+  default     = false
 }
-
-variable "required_status_checks" {
-  description = "List of required status check contexts"
-  type        = list(string)
-  default     = []
-}
-
 variable "secret_scanning" {
-  type    = bool
-  default = true
+  description = "Enable GitHub secret scanning"
+  type        = bool
+  default     = true
 }
 variable "secret_scanning_push_protection" {
-  type    = bool
-  default = true
+  description = "Enable push protection for detected secrets"
+  type        = bool
+  default     = true
 }
 variable "dependabot_security_updates" {
-  type    = bool
-  default = true
+  description = "Enable Dependabot security update PRs"
+  type        = bool
+  default     = true
 }
 variable "vulnerability_alerts" {
-  type    = bool
-  default = true
+  description = "Enable GitHub vulnerability (Dependabot) alerts"
+  type        = bool
+  default     = true
 }
-
 # NOTE: Actions fine-grained allow lists are currently omitted due to provider attribute instability.
 variable "actions_allowed_actions" {
   description = "Simplified actions policy (all, local_only)"

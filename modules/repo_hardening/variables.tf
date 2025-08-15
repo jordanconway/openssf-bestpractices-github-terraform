@@ -65,7 +65,29 @@ variable "has_wiki" {
 }
 variable "is_template" {
   type    = bool
-  default = false
+  description = "Enable GitHub Issues for the repository"
+  type        = bool
+  default     = true
+}
+variable "has_discussions" {
+  description = "Enable GitHub Discussions for the repository"
+  type        = bool
+  default     = false
+}
+variable "has_projects" {
+  description = "Enable GitHub Projects for the repository"
+  type        = bool
+  default     = false
+}
+variable "has_wiki" {
+  description = "Enable GitHub Wiki for the repository"
+  type        = bool
+  default     = false
+}
+variable "is_template" {
+  description = "Mark the repository as a template repository"
+  type        = bool
+  default     = false
 }
 
 variable "allow_merge_commit" {

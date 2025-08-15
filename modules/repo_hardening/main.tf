@@ -124,5 +124,4 @@ resource "github_repository_file" "dependabot" {
   overwrite_on_create = true
 }
 
-output "repository_name" { value = github_repository.this.name }
 output "repository_full_name" { value = local.repo_full_name }

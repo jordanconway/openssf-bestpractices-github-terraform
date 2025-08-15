@@ -61,6 +61,8 @@ resource "github_branch_protection" "main" {
   require_signed_commits          = var.require_signed_commits
   required_linear_history         = var.required_linear_history
   require_conversation_resolution = var.require_conversation_resolution
+  # Ignore changes to required_status_checks contexts because these may be managed outside of Terraform
+  # (e.g., by GitHub Actions or other automation), and enforcing them here can cause unnecessary diffs or errors.
   lifecycle {
     ignore_changes = [required_status_checks[0].contexts]
   }

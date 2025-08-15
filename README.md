@@ -92,7 +92,7 @@ Outputs:
 
 Outputs:
 
-* `organization_id` – Numeric ID of the organization.
+* `id` – Numeric ID of the organization.
 
 ### Required vs Optional Summary
 Minimal invocation:

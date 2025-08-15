@@ -138,6 +138,11 @@ variable "allow_deletions" {
   type        = bool
   default     = false
 }
+variable "required_status_checks" {
+  description = "List of status check contexts required before merging into the protected branch"
+  type        = list(string)
+  default     = []
+}
 variable "secret_scanning" {
   description = "Enable GitHub secret scanning"
   type        = bool

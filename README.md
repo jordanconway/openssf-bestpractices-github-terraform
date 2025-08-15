@@ -69,7 +69,7 @@ envs/
 
 Outputs:
 
-* `repository_id` – Numeric ID of the created repository.
+* `id` – Numeric ID of the created repository.
 * `repository_full_name` – Fully qualified `org/name`.
 
 ### `org_hardening` Module Variables
